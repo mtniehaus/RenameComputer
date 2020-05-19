@@ -141,7 +141,7 @@ else
     
     # Register the scheduled task
     Register-ScheduledTask -User SYSTEM -Action $action -Trigger $triggers -TaskName "RenameComputer" -Description "RenameComputer" -Force
-    Write-Host "(Get-Date -Format FileDateTimeUniversal) Scheduled task created."
+    Write-Host "Scheduled task created."
 }
 
 Stop-Transcript
