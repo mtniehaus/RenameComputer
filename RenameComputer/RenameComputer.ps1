@@ -106,8 +106,8 @@ if ($goodToGo)
         Exit 3010
     }
     else {
-        Write-Host "Initiating a restart in 15 minutes"
-        & shutdown.exe /g /t 300 /f /c "Restarting the computer due to a computer name change.  Save your work."
+        Write-Host "Initiating a restart in 10 minutes"
+        & shutdown.exe /g /t 600 /f /c "Restarting the computer due to a computer name change.  Save your work."
         Stop-Transcript
         Exit 0
     }
