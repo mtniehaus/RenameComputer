@@ -119,7 +119,8 @@ else
     if ($existingTask -ne $null)
     {
         Write-Host "Scheduled task already exists."
-        return
+        Stop-Transcript
+        Exit 0
     }
 
     # Copy myself to a safe place if not already there
