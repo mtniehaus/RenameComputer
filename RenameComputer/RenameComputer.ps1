@@ -94,8 +94,8 @@ if ($goodToGo)
     Rename-Computer -NewName $newName.name
 
     # Remove the scheduled task
-    Disable-ScheduledTask -TaskName "RenameComputer"
-    Unregister-ScheduledTask -TaskName "RenameComputer" -Confirm:$false
+    Disable-ScheduledTask -TaskName "RenameComputer" -ErrorAction Ignore
+    Unregister-ScheduledTask -TaskName "RenameComputer" -Confirm:$false -ErrorAction Ignore
     Write-Host "Scheduled task unregistered."
 
     # Make sure we reboot if still in ESP/OOBE by reporting a 3010 return code
