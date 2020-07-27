@@ -98,12 +98,12 @@ if ($goodToGo)
     Unregister-ScheduledTask -TaskName "RenameComputer" -Confirm:$false -ErrorAction Ignore
     Write-Host "Scheduled task unregistered."
 
-    # Make sure we reboot if still in ESP/OOBE by reporting a 3010 return code
+    # Make sure we reboot if still in ESP/OOBE by reporting a 1641 return code (hard reboot)
     if ($details.CsUserName -match "defaultUser")
     {
-        Write-Host "Exiting during ESP/OOBE with return code 3010"
+        Write-Host "Exiting during ESP/OOBE with return code 1641"
         Stop-Transcript
-        Exit 3010
+        Exit 1641
     }
     else {
         Write-Host "Initiating a restart in 10 minutes"
