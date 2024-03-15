@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.1
+.VERSION 1.2
 
 .GUID 3b42d8c8-cda5-4411-a623-90d812a8e29e
 
@@ -26,6 +26,8 @@
 .EXTERNALSCRIPTDEPENDENCIES
 
 .RELEASENOTES
+Version 1.2: Fixed PowerShell 5.1 bug (BiosSeralNumber)
+Version 1.1: Updated for AAD scenarios too.
 Version 1.0: Initial version.
 
 .PRIVATEDATA
@@ -115,7 +117,12 @@ if ($goodToGo)
     # serial number if no asset tag is available (replace this logic if you want)
     $systemEnclosure = Get-CimInstance -ClassName Win32_SystemEnclosure
     if (($null -eq $systemEnclosure.SMBIOSAssetTag) -or ($systemEnclosure.SMBIOSAssetTag -eq "")) {
-        $assetTag = $details.BiosSerialNumber
+        # Stupid PowerShell 5.1 bug
+        if ($null -ne $details.BiosSerialNumber) {
+            $assetTag = $details.BiosSerialNumber
+        } else {
+            $assetTag = $details.BiosSeralNumber
+        }
     } else {
         $assetTag = $systemEnclosure.SMBIOSAssetTag
     }
