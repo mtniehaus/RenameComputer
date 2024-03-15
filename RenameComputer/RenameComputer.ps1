@@ -144,7 +144,7 @@ if ($goodToGo)
 
     # Set the computer name
     Write-Host "Renaming computer to $($newName)"
-    Rename-Computer -NewName $newName
+    Rename-Computer -NewName $newName -Force
 
     # Make sure we reboot if still in ESP/OOBE by reporting a 1641 return code (hard reboot)
     if ($details.CsUserName -match "defaultUser")
