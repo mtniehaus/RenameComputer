@@ -81,8 +81,6 @@ if (($Prefix -ne "") -and (-not $details.CsName.StartsWith($Prefix))) {
     Stop-Transcript
     Exit 0
 }
-Write-Host "Oh!"
-exit 3
 
 # See if we are AD or AAD joined
 $isAD = $false
